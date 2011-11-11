@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canvas Test</title>
+  </head>
+<body>
+  <section>
+    <div>
+        <canvas id="canvas" width="600" height="500">
+         This text is displayed if your browser 
+         does not support HTML5 Canvas.
+        </canvas>
+		<canvas id="canvas2" width="600" height="500">
+         This text is displayed if your browser
+         does not support HTML5 Canvas.
+        </canvas>
+    </div>
+
+<script type="text/javascript">
+var canvas;  
+var ctx;
+var x = 200;
+var y = 150;
+var dx = 2;
+var dy = 4;
+var direccion = 135;
+var WIDTH = 600;
+var HEIGHT = 500;
+var speed = 5;
+
+function circle(x,y,r) {
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI*2, true);
+  ctx.fill();
+}
+
+function rect(x,y,w,h) {
+  ctx.beginPath();
+  ctx.rect(x,y,w,h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+ 
+function clear() {
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+}
+
+function init() {
+  canvas = document.getElementById("canvas");
+  ctx = canvas.getContext("2d");
+  return setInterval(draw, 50);
+}
+
+
+function draw() {
+	var maxAnguloGiro = 500;
+	var angulo = (Math.floor(Math.random()*(maxAnguloGiro*2)) - maxAnguloGiro) / 1000;
+	direccion += angulo;
+	
+	clear();
+	ctx.fillStyle = "#FAF7F8";
+	rect(0,0,WIDTH,HEIGHT);
+	ctx.fillStyle = "#ff0000";
+	circle(x, y, 3);
+
+	if (x + dx > WIDTH){
+		x -= WIDTH;
+	}
+
+	if (x + dx < 0){
+		x += WIDTH;
+	}
+
+	if(y + dy < 0){
+		y += HEIGHT;
+	}
+
+	if (y + dy > HEIGHT){
+		y -= HEIGHT;
+	}
+
+	x += dx;
+	y -= dy;
+
+	dx = speed*Math.sin(direccion);
+	dy = speed*Math.cos(direccion);
+}
+
+init();
+</script>
+
+  </section>
+</body>
+</html>

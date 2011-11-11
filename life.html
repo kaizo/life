@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canvas Test</title>
+	<SCRIPT LANGUAGE="JavaScript" SRC="canvas.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" SRC="minions/prey.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" SRC="minions/predator.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" SRC="minions/element.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" SRC="world.js"></SCRIPT>
+  <SCRIPT LANGUAGE="JavaScript" SRC="event.js"></SCRIPT>
+  </head>
+<body>
+<input type="button" onclick="myWorld.start()" value="start">
+<input type="button" onclick="myWorld.stop()" value="stop">
+<input type="button" onclick="myWorld.step()" value="step">
+
+  <section>
+    <div>
+        <canvas id="canvas" width="600" height="500">
+         This text is displayed if your browser
+         does not support HTML5 Canvas.
+        </canvas>
+    </div>
+<script type="text/javascript">
+
+var myWorld = world({
+	width: 600,
+	height: 500
+});
+myWorld.createPreys();
+myWorld.createPredators();
+//myWorld.start();
+</script>
+
+  </section>
+</body>
+</html>
